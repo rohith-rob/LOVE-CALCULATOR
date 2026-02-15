@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Love Calculator </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="scene">
+        <div class="card" id="card">
+            <div class="card-face front">
+                <header>
+                    <pre class="ascii-title">
+ _      __   _____       _______  __ 
+| | /| / /  / ___/      / ___/  |/  /
+| |/ |/ /  / /__       / /__ / /|_/ / 
+|__/|__/   \___/       \___//_/  /_/  
+                    </pre>
+                    <h1>ASCII Love Calculator</h1>
+                </header>
+                <div class="input-group">
+                    <label for="name1">Name 1:</label>
+                    <input type="text" id="name1" placeholder="Romeo" autocomplete="off">
+                </div>
+                <div class="heart-divider">
+                    &lt;3
+                </div>
+                <div class="input-group">
+                    <label for="name2">Name 2:</label>
+                    <input type="text" id="name2" placeholder="Juliet" autocomplete="off">
+                </div>
+                <button id="calculate-btn">Calculate Love %</button>
+            </div>
+            <div class="card-face back">
+                <div class="result-container">
+                    <pre id="ascii-heart"></pre>
+                    <h2 id="percentage"></h2>
+                    <p id="message"></p>
+                    <p id="save-status" class="status-msg"></p>
+                    <button id="reset-btn">Check Another Couple</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

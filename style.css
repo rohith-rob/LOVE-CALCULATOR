@@ -1,0 +1,273 @@
+:root {
+    --bg-color: #0d0d0d;
+    --text-color: #00ff41;
+    /* CRT Green */
+    --accent-color: #ff0055;
+    /* Hot Pink */
+    --card-bg: #1a1a1a;
+    --font-stack: 'VT323', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-stack);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.scene {
+    width: 400px;
+    height: 600px;
+    perspective: 1000px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--card-bg);
+    border: 2px solid var(--text-color);
+    box-shadow: 0 0 15px var(--text-color), inset 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: var(--card-bg);
+}
+
+.card-face.back {
+    transform: rotateY(180deg);
+}
+
+/* ASCII Decorations */
+.ascii-title {
+    font-size: 10px;
+    line-height: 10px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-align: center;
+    white-space: pre;
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0px var(--accent-color);
+    letter-spacing: 2px;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    font-family: var(--font-stack);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 10px var(--text-color);
+    background: rgba(0, 255, 65, 0.1);
+}
+
+.heart-divider {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin: 10px 0;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    font-family: var(--font-stack);
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px var(--accent-color);
+}
+
+button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--accent-color);
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--accent-color);
+}
+
+.secondary-btn {
+    margin-top: 10px;
+    background: transparent;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    box-shadow: none;
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+.secondary-btn:hover {
+    background: rgba(0, 255, 65, 0.1);
+    box-shadow: 0 0 10px var(--text-color);
+    transform: none;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 2px solid var(--text-color);
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 20px var(--text-color);
+    position: relative;
+    font-family: var(--font-stack);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+.history-list {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.history-item {
+    border-bottom: 1px dashed var(--text-color);
+    padding: 10px 0;
+    font-size: 1.2rem;
+}
+
+.history-item span {
+    color: var(--accent-color);
+}
+
+#ascii-heart {
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--accent-color);
+    white-space: pre;
+    margin-bottom: 20px;
+}
+
+#percentage {
+    font-size: 4rem;
+    color: var(--text-color);
+    text-shadow: 0 0 10px var(--text-color);
+    margin-bottom: 10px;
+}
+
+#message {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.status-msg {
+    font-size: 1rem;
+    min-height: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* 3D Scanlines effect */
+body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
